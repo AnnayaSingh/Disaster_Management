@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #90b9a4;
+            color: black;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color:#90b9a4;
+            color: black;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+        .dashboard {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4f7963;
+        }
+        /* Google Map Styling */
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        /* Dashboard cards for Data */
+        .dashboard-card {
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        /* Flexbox for gallery container */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+/* Styling for each gallery item */
+.gallery {
+    flex-basis: 24%; /* Each item takes up 24% of the container width */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+.desc {
+    padding: 10px 0;
+    font-size: 18px;
+    color: #4f7963;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .gallery {
+        flex-basis: 48%; /* On smaller screens, make each item 48% width */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        flex-basis: 100%; /* On mobile, each item takes full width */
+    }
+}
+
+section {
+            /* padding: 20px;
+            margin: 20px; */
+            /* Styles for the form container */
+            .form-container {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Label styles */
+            .form-label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            /* Input and textarea styles */
+            .form-input,
+            .form-textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+                font-size: 16px;
+            }
+
+            /* Specific textarea height */
+            .form-textarea {
+                height: 120px;
+            }
+
+            /* Submit button styles */
+            .form-submit {
+                width: 100%;
+                padding: 12px;
+                background-color: #28a745;
+                color: white;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+/* Submit button hover effect */
+.form-submit:hover {
+    background-color: #218838;
+}
+}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="../image/sihlogo2.png" alt="SIH Logo" style="height: 90px; width: 230px; float: left; margin-top: 10px;" >
+    <img src="../image/ceclogo.png" alt="CEC Logo" style="height: 90px; width: 230px; float: left; margin-top: 10px;">
+    <img src="../image/logo2.png" alt="Disaster Management Logo" style="height: 110px; width: 150px; float: right;">
+    <h1 style="margin-right: 400px;">Disaster Management Portal</h1>
+    <p style="margin-right: 400px;">Your safety is our priority</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#News">News Feed</a>
+    <a href="#prevention">Prevention Tips</a>
+    <a href="#contact">Contact Us</a>
+    <a class="num" style="margin-left: 750px;" href="#helpline">Helpline Number: 011-72XXXXXX</a>
+</nav>
+
+<section id="home">
+    <h2>Welcome to Disaster Management Portal</h2>
+    <p>We provide the latest updates, resources, and tips for handling natural disasters. Learn about different types of disasters and how to prevent and manage them.</p>
+</section>
+
+<section id="News">
+    <h2>News Feed</h2>
+    
+    <div class="dashboard-card">
+        <div id="news-updates">
+            <h3>News Updates</h3>
+            <ul id="news-feed"></ul> <!-- To display news articles -->
+        </div>
+    </div>
+</section>
+
+<h2>Google Map</h2>
+<div id="map"></div>
+
+<section id="prevention">
+    <h2 style="text-align: left;">Prevention and Safety Tips</h2>
+    <p>Make sure to stay prepared by following these prevention tips for various disasters. Having an emergency kit and a communication plan can save lives.</p>
+</section>
+
+<h2>Kinds of Disasters</h2>
+<div class="gallery-container">
+    <div class="gallery">
+        <a target="_blank" href="../image/earthquake.jpg">
+            <img src="../image/earthquake.jpg" alt="Earthquake">
+        </a>
+        <div class="desc">EARTHQUAKE</div>
+    </div>
+
+    <div class="gallery">
+        <a target="_blank" href="../image/flood.jpg">
+            <img src="../image/flood.jpg" alt="Flood">
+        </a>
+        <div class="desc">FLOOD</div>
+    </div>
+
+    <div class="gallery">
+        <a target="_blank" href="../image/landslide.jpg">
+            <img src="../image/landslide.jpg" alt="Landslide">
+        </a>
+        <div class="desc">LANDSLIDE</div>
+    </div>
+
+    <div class="gallery">
+        <a target="_blank" href="../image/wildfires.jpg">
+            <img src="../image/wildfires.jpg" alt="Wildfires">
+        </a>
+        <div class="desc">WILDFIRES</div>
+    </div>
+</div>
+</section>
+
+
+
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-form">
+            <form class="form-container" action="#" method="post">
+                <!-- Name Field -->
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-input" required>
+        
+                <!-- Email Field -->
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+        
+                <!-- Message Field -->
+                <label for="message" class="form-label">Message:</label>
+                <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+        
+                <!-- Submit Button -->
+                <input type="submit" class="form-submit" value="Submit">
+            </form>
+        </div>
+    
+</section>
+
+<!-- Adding Google Map Integration -->
+<script>
+    function initMap() {
+        const location = { lat: 30.687, lng: 76.664 }; // Coordinates for New York City
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 10,
+            center: location,
+        });
+        const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHYOpn76FBbk_iH7KmlP-6nSljA6Pv704&callback=initMap"></script>
+
+<!-- Fetching Social Media and News Data -->
+<script>
+    async function fetchSocialMediaAndNews() {
+        try {
+           
+
+            // Fetch data from News API
+            const newsResponse = await fetch(`https://newsapi.org/v2/everything?q=disaster+India&apiKey=15630b40b5484d9ab7609c59035498fd`);
+            const newsData = await newsResponse.json();
+
+            
+
+           
+            // Populate News Feed
+            const newsFeed = document.getElementById('news-feed');
+            newsData.articles.forEach(article => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${article.title} - ${article.source.name}`;
+                newsFeed.appendChild(listItem);
+            });
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    fetchSocialMediaAndNews();
+</script>
+
+<footer>
+    <p>&copy; 2024 Disaster Management Portal. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
